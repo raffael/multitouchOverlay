@@ -1,3 +1,6 @@
+/**
+ * A blob DIV is a visual representation of a Touch event
+ */
 .blob {
 	background: rgba(255,124,124,0.7);
 	border: 2px solid rgba(255,255,255,1);
@@ -16,6 +19,9 @@
 	opacity: 1;	
 }
 
+/**
+ * The DIV where all the blobs are put into
+ */
 #multitouch-overlay {
 	position: absolute;
 	top: 0;left: 0;right: 0;bottom: 0;
