@@ -39,16 +39,16 @@
 		 * the DIV element.
 		 */
 		var makeBlob	= function(data) {
-			var blob	= jQuery('<div class="blob" rel="'+data.identifier+'" style="top: '+data.pageY+'px; left: '+data.pageX+'px;"></div>');
+			if ($('#b'+data.identifier).length>0) return;
+			var blob	= jQuery('<div class="blob" id="b'+data.identifier+'" style="top: '+data.pageY+'px; left: '+data.pageX+'px;"></div>');
 			overlay.append(blob);
 		};
 		
 		/**
-		 * This method clears out all the recently created blob containers by simply removing
-		 * the HTML inner content of overlay.
+		 * This method clears out a specific blob
 		 */
-		var clearBlobs	= function(){
-			overlay.empty();
+		var clearBlob	= function(identifier){
+			$('#b'+identifier).remove();
 		};
 		
 		/**
@@ -56,20 +56,17 @@
 		 * it is placed on the correct position.
 		 */
 		var updateBlob = function(data){
-			overlay.find('.blob[rel='+data.identifier+']').css({
+			$('#b'+data.identifier).css({
 				top: data.pageY,
 				left: data.pageX
 			});
 		};
 		
 		/**
-		 * The first event listener clears out all blobs as soon as a touchstart event is fired.
-		 * After that, new blobs are created for every single touch of the touches array.
+		 * On touchstart event, new blobs are created for every single changed touch of the touches array.
 		 */
 		document.getElementById(touchEventCaptorId).addEventListener('touchstart', function(event) {
-			clearBlobs();
-			for(var i=0;i<event.touches.length;i++)
-				makeBlob(event.touches[i]);
+			for(var i=0;i<event.changedTouches.length;i++) makeBlob(event.touches[i]);
 		}, false);
 		
 		/**
@@ -82,10 +79,10 @@
 		}, false);
 		
 		/**
-		 * As soon as the touch event ends, the touchend event will be fired. Remove all blobs.
+		 * As soon as the touch event ends, the touchend event will be fired, remove the corresponding blob
 		 */
 		document.getElementById(touchEventCaptorId).addEventListener('touchend', function(event) {
-			clearBlobs();
+			clearBlob(event.changedTouches[0].identifier);
 		}, false);
 	};
 })();
