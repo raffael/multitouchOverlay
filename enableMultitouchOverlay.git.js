@@ -1,10 +1,10 @@
 var script=document.createElement('script');
-script.src='http://raffael.local/bachelor/MultitouchOverlay/multitouchOverlay.js';
+script.src='https://raw.github.com/raffael-me/MultitouchOverlay/master/multitouchOverlay.js';
 script.type='text/javascript';
 document.head.appendChild(script);
 
 var link=document.createElement('link');
-link.href='http://raffael.local/bachelor/MultitouchOverlay/multitouchOverlay.css';
+link.href='https://raw.github.com/raffael-me/MultitouchOverlay/master/multitouchOverlay.css';
 link.type='text/css';
 link.rel='stylesheet';
 document.head.appendChild(link);
