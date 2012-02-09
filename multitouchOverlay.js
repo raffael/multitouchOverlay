@@ -66,7 +66,7 @@
 		 * On touchstart event, new blobs are created for every single changed touch of the touches array.
 		 */
 		document.getElementById(touchEventCaptorId).addEventListener('touchstart', function(event) {
-			for(var i=0;i<event.changedTouches.length;i++) makeBlob(event.touches[i]);
+			for(var i=0;i<event.changedTouches.length;i++) makeBlob(event.changedTouches[i]);
 		}, false);
 		
 		/**
