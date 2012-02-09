@@ -3,10 +3,8 @@ script.src='https://raw.github.com/raffael-me/MultitouchOverlay/master/multitouc
 script.type='text/javascript';
 document.head.appendChild(script);
 
-var link=document.createElement('link');
-link.href='https://raw.github.com/raffael-me/MultitouchOverlay/master/multitouchOverlay.css';
-link.type='text/css';
-link.rel='stylesheet';
+var link=document.createElement('style');
+link.innerHTML = "@import url('https://raw.github.com/raffael-me/MultitouchOverlay/master/multitouchOverlay.css');";
 document.head.appendChild(link);
 
 setTimeout(function(){
